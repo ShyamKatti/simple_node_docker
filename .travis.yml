@@ -1,21 +1,21 @@
 language: node_js
 node_js:
-	- 13
+  - 13
 
 services:
-	- docker
+  - docker
 
 install:
-	- echo "nothing to install"
+  - echo "nothing to install"
 
 before_scripts:
-	- echo "no before_scripts"
+  - echo "no before_scripts"
 
 script:
-	- docker --version
-	- docker build -t simple-node-travis .
-	- docker tag simple-node-travis kattishyam/simple_node_udacity:latest
+  - docker --version
+  - docker build -t simple-node-travis .
+  - docker tag simple-node-travis kattishyam/simple_node_udacity:latest
 
 after_success:
-	- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-	- docker push kattishyam/simple_node_udacity
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push kattishyam/simple_node_udacity
